@@ -213,3 +213,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+.gitattributes
+.gitignore
+Helper.hi
+Helper.o
+compile25.cmd
+euler25.exe

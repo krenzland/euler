@@ -1,7 +1,7 @@
-import Helper (primes)
+import Helper (primesTo)
 
 main :: IO ()
 main = print euler10
 
-euler10 :: (Integral a) => a -- FUCKING SLOW
-euler10 = sum $ takeWhile (\x -> x < 2000000) primes
+euler10 :: Integer
+euler10 = sum $ primesTo 2000000
