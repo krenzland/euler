@@ -13,20 +13,18 @@ euler21 = sum amicableNumbers
 
 amicableNumbers :: [Int]
 amicableNumbers = [x | x <- numbers, isAmicableNumber x]
-		where
-			isAmicableNumber n = doubleLookup n /= [] && check n  && checkself n
-			check y = or (elem y <$> doubleLookup y)
-			checkself y = y `notElem` fromMaybe [] (numberVector `vectorLookup` y)
-
-
+        where
+            isAmicableNumber n = doubleLookup n /= [] && check n  && checkself n
+            check y = or (elem y <$> doubleLookup y)
+            checkself y = y `notElem` fromMaybe [] (numberVector `vectorLookup` y)
 
 doubleLookup :: Int -> [[Int]]
 doubleLookup n = (fromMaybe [] . (numberVector `vectorLookup`)) <$> fromMaybe [] (numberVector `vectorLookup` n)
 
 vectorLookup :: forall a. V.Vector (Maybe a) -> Int -> Maybe a
 vectorLookup v i
-				| i > V.length v = Nothing
-				| otherwise = v V.! i
+                | i > V.length v = Nothing
+                | otherwise = v V.! i
 
 numberVector :: V.Vector (Maybe [Int])
 numberVector = V.fromList $ maybefy $ constructList divisorList 0
@@ -37,9 +35,9 @@ constructList xs acc = listyfy  (takeWhile (\x -> fst x == acc) xs) : constructL
 
 maybefy :: forall a. [[a]] -> [Maybe [a]]
 maybefy = map maybefy'
-		where
-			maybefy' [] = Nothing
-			maybefy' xs = Just xs
+        where
+            maybefy' [] = Nothing
+            maybefy' xs = Just xs
 
 listyfy :: forall a. [(a, a)] -> [a]
 listyfy = map snd
