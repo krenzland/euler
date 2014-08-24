@@ -2,12 +2,15 @@ import           Control.Applicative ((<$>))
 import           Data.Map            (Map)
 import qualified Data.Map            as M
 import           Data.Maybe          (fromJust)
+import Control.Monad.RWS
+import qualified Data.Vector.Mutable as VM
+import qualified Data.Vector as V
 
 main :: IO ()
-main = print euler14
+main = print example
 
 euler14 :: Int
-euler14 = snd . maximum . zipMap length $ getList 999999
+euler14 = snd . maximum . zipMap length $  getList 999999
 	where
 		zipMap f xs = zip (f <$> xs) (head <$> xs)
 
@@ -35,3 +38,22 @@ nextCollatz n
 			| even n = n `quot` 2
 			| otherwise = 3 * n + 1
 
+
+type R = Int
+type W = [Int]
+type S = Map Int Int
+
+computation :: RWS R W S ()
+computation = do
+  value <- ask
+  stat <- get
+  let b = value + value
+  tell [b]
+  tell [b]
+
+
+example = execRWS computation reader_ (state_)
+	where
+		reader_ = 10
+		state__ = VM.new 10
+		state_ = M.empty

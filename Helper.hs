@@ -28,9 +28,9 @@ primes = sieve [2..]
 				sieve (p:xs) = p : sieve [x | x <- xs, (x `rem` p) /= 0]
 
 primeFactors :: (Integral a) => a -> [Integer]
-primeFactors n =  [x | x <- (primesUntil $ fromIntegral n), ((fromIntegral n) `rem` x) == 0]
+primeFactors n =  [x | x <- primesUntil $ fromIntegral n, (fromIntegral n `rem` x) == 0]
 			where
-				primesUntil n = takeWhile(\x -> (x<= n)) $ primesTo n
+				primesUntil n = takeWhile (<= n) $ primesTo n
 
 digits :: Integral x => x -> [x]
 digits 0 = []
@@ -50,7 +50,7 @@ approximationNthPrime n
 			|  n <= 6
 			= 13
 			|  otherwise =
-			fromIntegral $ ceiling $ (fromIntegral n) * (log $ fromIntegral n)  + (fromIntegral n) * (log $ log $ fromIntegral n)
+			fromIntegral $ ceiling $ fromIntegral n * log  (fromIntegral n)  + fromIntegral n * log (log $ fromIntegral n)
 
 nubQ :: (Ord a) => [a] -> [a]
 nubQ = S.toList . S.fromList
