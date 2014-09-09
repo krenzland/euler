@@ -1,5 +1,5 @@
 main :: IO ()
-main = print $ euler1
+main = print euler1
 
 euler1 :: (Integral a) => a
 euler1 = sum numbers

@@ -3,7 +3,7 @@ import           Helper (digits)
 main :: IO ()
 main = print euler8
 
-euler8 = maximum $ map product $ map take4numbers [1..987]
+euler8 = maximum $ map (product . take4numbers) [1..987]
 			where
 				take4numbers d = take 13 $ drop d $ reverse $ digits largeNumber
 

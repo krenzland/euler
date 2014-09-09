@@ -32,6 +32,8 @@ primeFactors n =  [x | x <- primesUntil $ fromIntegral n, (fromIntegral n `rem` 
 			where
 				primesUntil n = takeWhile (<= n) $ primesTo n
 
+
+-- returns digits in reverse order!
 digits :: Integral x => x -> [x]
 digits 0 = []
 digits x = x `rem` 10 : digits (x `div` 10)
