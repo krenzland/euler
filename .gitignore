@@ -219,3 +219,4 @@ Helper.hi
 Helper.o
 compile25.cmd
 euler25.exe
+*.bk
