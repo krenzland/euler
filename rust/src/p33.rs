@@ -1,16 +1,6 @@
 use std::collections::HashSet;
 use num::rational::Rational;
-
-fn digits(x: u32) -> Vec<u32> {
-    let mut digits: Vec<u32> = Vec::new();
-    let mut r = x;
-    while r > 0 {
-        let digit = r % 10;
-        r /= 10;
-        digits.push(digit);
-    }
-    digits
-}
+use ntheory::digits;
 
 fn is_curious_frac(nom: u32, denom: u32) -> bool {
     let nom_digs: HashSet<_> = digits(nom).into_iter().collect();

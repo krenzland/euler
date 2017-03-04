@@ -3,7 +3,8 @@ use num::bigint::BigInt;
 use num::FromPrimitive;
 
 fn square_root_convergents(num_conv: u32) -> u32 {
-    let mut convergent = BigRational::new(BigInt::from_u32(1).unwrap(), BigInt::from_u32(1).unwrap()); 
+    let mut convergent = BigRational::new(BigInt::from_u32(1).unwrap(),
+                                          BigInt::from_u32(1).unwrap());
     let mut num_lt_denom = 0;
     for _ in 0..num_conv {
         let num = convergent.numer() + BigInt::from_u32(2).unwrap() * convergent.denom();
@@ -12,7 +13,7 @@ fn square_root_convergents(num_conv: u32) -> u32 {
         let ndig_denom = denom.to_str_radix(10).len();
         convergent = BigRational::new(num, denom);
         if ndig_num > ndig_denom {
-           num_lt_denom += 1;
+            num_lt_denom += 1;
         }
     }
     num_lt_denom
@@ -24,6 +25,6 @@ pub fn main() {
 
 #[test]
 fn test() {
-    assert_eq!(square_root_convergents(8),1);
-    assert_eq!(square_root_convergents(1000),153);
+    assert_eq!(square_root_convergents(8), 1);
+    assert_eq!(square_root_convergents(1000), 153);
 }
