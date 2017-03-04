@@ -1,7 +1,10 @@
+extern crate num;
 extern crate clap;
+
 use clap::{Arg, App};
 
 mod p11;
+mod p65;
 
 fn main() {
     let matches = App::new("Rust-Euler")
@@ -18,11 +21,11 @@ fn main() {
     if let Some(problem) = matches.value_of("problem") {
         match problem {
             "11" => p11::main(),
+            "65" => p65::main(),
             _ => println!("Unknown problem id!"),
         }
     } else {
-        p11::main();
-        // Run most recent problem.
+        p65::main(); // Run most recent problem.
     }
 
 }
