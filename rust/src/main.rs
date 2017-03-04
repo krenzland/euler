@@ -9,6 +9,7 @@ mod p23;
 mod p33;
 mod p57;
 mod p65;
+mod p119;
 
 fn main() {
     let matches = App::new("Rust-Euler")
@@ -29,10 +30,11 @@ fn main() {
             "33" => p33::main(),
             "57" => p57::main(),
             "65" => p65::main(),
+            "119" => p119::main(),
             _ => println!("Unknown problem id!"),
         }
     } else {
-        p23::main(); // Run most recent problem.
+        p119::main(); // Run most recent problem.
     }
 
 }

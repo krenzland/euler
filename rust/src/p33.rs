@@ -2,7 +2,7 @@ use std::collections::HashSet;
 use num::rational::Rational;
 use ntheory::digits;
 
-fn is_curious_frac(nom: u32, denom: u32) -> bool {
+fn is_curious_frac(nom: u64, denom: u64) -> bool {
     let nom_digs: HashSet<_> = digits(nom).into_iter().collect();
     let denom_digs: HashSet<_> = digits(denom).into_iter().collect();
     let mut intersec = nom_digs.intersection(&denom_digs);

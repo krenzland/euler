@@ -27,7 +27,7 @@ pub fn main() {
         }
         // Note: A number can be abundant and writeable as abundant-sum at the same time!
         if !is_abundant_sum(i, &abundant) {
-           not_writeable += i; 
+            not_writeable += i;
         }
     }
     println!("{}", not_writeable);

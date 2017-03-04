@@ -1,5 +1,6 @@
-pub fn digits(x: u32) -> Vec<u32> {
-    let mut digits: Vec<u32> = Vec::new();
+
+pub fn digits(x: u64) -> Vec<u64> {
+    let mut digits: Vec<u64> = Vec::new();
     let mut r = x;
     while r > 0 {
         let digit = r % 10;
