@@ -7,6 +7,7 @@ mod ntheory;
 mod p11;
 mod p23;
 mod p33;
+mod p30;
 mod p34;
 mod p57;
 mod p65;
@@ -28,6 +29,7 @@ fn main() {
         match problem {
             "11" => p11::main(),
             "23" => p23::main(),
+            "30" => p30::main(),
             "33" => p33::main(),
             "34" => p34::main(),
             "57" => p57::main(),
@@ -36,7 +38,7 @@ fn main() {
             _ => println!("Unknown problem id!"),
         }
     } else {
-        p34::main(); // Run most recent problem.
+        p30::main(); // Run most recent problem.
     }
 
 }
