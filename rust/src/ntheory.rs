@@ -46,6 +46,15 @@ pub fn primes(max: usize) -> BitVec {
     primes
 }
 
+pub fn digit_sum_str(x: &str) -> u32 {
+    let mut sum = 0;
+    for c in x.chars() {
+        let digit = c.to_digit(10).unwrap();
+        sum += digit;
+    }
+    sum
+}
+
 #[test]
 fn test_divisors() {
     assert_eq!(divisors(28), vec![1, 2, 4, 7, 14]);
@@ -63,4 +72,13 @@ fn test_primes() {
     for composite in composites {
         assert!(!primes_is[composite]);
     }
+}
+
+#[test]
+fn test_digit_sum_str() {
+    assert_eq!(digit_sum_str("1"), 1);
+    assert_eq!(digit_sum_str("17"), 8);
+    assert_eq!(digit_sum_str("18"), 9);
+    assert_eq!(digit_sum_str("391"), 13);
+    assert_eq!(digit_sum_str("101"), 2);
 }

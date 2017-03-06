@@ -2,26 +2,7 @@
 
 use num::bigint::BigInt;
 use num::FromPrimitive;
-
-fn digit_sum(x: u32) -> u32 {
-    let mut sum = 0;
-    let mut r = x;
-    while r > 0 {
-        let digit = r % 10;
-        r /= 10;
-        sum += digit;
-    }
-    sum
-}
-
-fn digit_sum_str(x: &str) -> u32 {
-    let mut sum = 0;
-    for c in x.chars() {
-        let digit = c.to_digit(10).unwrap();
-        sum += digit;
-    }
-    sum
-}
+use ntheory::digit_sum_str;
 
 fn sum_of_nth_nominator(num_conv: usize) -> u32 {
     let even = (1..num_conv / 2).map(|i| i * 2);
@@ -54,23 +35,6 @@ pub fn main() {
     println!("{}", sum);
 }
 
-#[test]
-fn test_digit_sum() {
-    assert_eq!(digit_sum(1), 1);
-    assert_eq!(digit_sum(17), 8);
-    assert_eq!(digit_sum(18), 9);
-    assert_eq!(digit_sum(391), 13);
-    assert_eq!(digit_sum(101), 2);
-}
-
-#[test]
-fn test_digit_sum_str() {
-    assert_eq!(digit_sum_str("1"), 1);
-    assert_eq!(digit_sum_str("17"), 8);
-    assert_eq!(digit_sum_str("18"), 9);
-    assert_eq!(digit_sum_str("391"), 13);
-    assert_eq!(digit_sum_str("101"), 2);
-}
 
 #[test]
 fn test() {
