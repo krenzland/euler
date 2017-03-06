@@ -6,3 +6,4 @@ authors = ["Lukas Krenz <lukas@krenz.land>"]
 [dependencies]
 clap = "2.20.*"
 num = "0.1"
+bit-vec = "0.4"
