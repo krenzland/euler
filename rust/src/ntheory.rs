@@ -1,14 +1,18 @@
 use bit_vec::BitVec;
 
-pub fn digits(x: u64) -> Vec<u64> {
+pub fn digits_base(x: u64, base: u64) -> Vec<u64> {
     let mut digits: Vec<u64> = Vec::new();
     let mut r = x;
     while r > 0 {
-        let digit = r % 10;
-        r /= 10;
+        let digit = r % base;
+        r /= base;
         digits.push(digit);
     }
     digits
+}
+
+pub fn digits(x: u64) -> Vec<u64> {
+    digits_base(x, 10)
 }
 
 pub fn divisors(x: u32) -> Vec<u32> {
