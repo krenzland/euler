@@ -19,8 +19,11 @@ fn best_prime_coeff() -> (i32, i32) {
     let mut best_a = 0;
     let mut best_b = 0;
     let mut max_n = 0;
-    for a in (-1000)..1000 {
-        for b in (-1001)..1001 {
+
+    // For n=0 the quadratic results in b => b has to be prime.
+    let possible_bs: Vec<i32> = (3..1001).filter(|&x| primes[(x as i32).abs() as usize]).collect();
+    for a in (-999)..1000 {
+        for &b in &possible_bs {
             let cur_n = max_prime(a, b, &primes);
             if max_n < cur_n {
                 best_a = a;
@@ -29,6 +32,7 @@ fn best_prime_coeff() -> (i32, i32) {
             }
         }
     }
+    println!("{}", possible_bs.len());
     (best_a, best_b)
 }
 
