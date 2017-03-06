@@ -3,14 +3,13 @@ use ntheory::digits;
 fn curious_sum(upper_bound: u64) -> u64 {
     let powers: Vec<u64> = (0..10).map(|x| x * x * x * x * x).collect();
 
-    let sum = (2..upper_bound)
+    (2..upper_bound)
         .filter(|&num| {
             let digs = digits(num);
             let fac_sum = digs.iter().map(|&x| powers[x as usize]).sum();
             num == fac_sum
         })
-        .sum();
-    sum
+        .sum()
 }
 
 pub fn main() {
