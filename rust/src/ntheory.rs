@@ -8,7 +8,16 @@ pub fn digits_base(x: u64, base: u64) -> Vec<u64> {
         r /= base;
         digits.push(digit);
     }
-    digits
+    digits.into_iter().rev().collect()
+}
+
+pub fn digits_to_num(digits: &[u64]) -> u64 {
+    let mut num = 0;
+    for &dig in digits.iter() {
+        num *= 10;
+        num += dig;
+    }
+    num
 }
 
 pub fn digits(x: u64) -> Vec<u64> {
@@ -81,4 +90,18 @@ fn test_digit_sum_str() {
     assert_eq!(digit_sum_str("18"), 9);
     assert_eq!(digit_sum_str("391"), 13);
     assert_eq!(digit_sum_str("101"), 2);
+}
+
+#[test]
+fn test_digits() {
+    assert_eq!(digits(10), vec![1, 0]);
+    assert_eq!(digits(132), vec![1, 3, 2]);
+    assert_eq!(digits(983), vec![9, 8, 3]);
+}
+#[test]
+fn test_digits_to_num() {
+    for i in 123..322 {
+        let digits = digits(i as u64);
+        assert!(i == digits_to_num(&digits));
+    }
 }

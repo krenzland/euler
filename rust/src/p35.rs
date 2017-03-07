@@ -1,7 +1,8 @@
 use ntheory::{digits, primes};
 
-// Takes a set of digits and calculates all possible permutated numbers.
+// Takes a set of digits and calculates all possible cyclic permutated numbers.
 fn digit_permutations(digs: &[u64]) -> Vec<u64> {
+    let digs: Vec<u64> = digs.to_owned().into_iter().rev().collect();
     let mut result = Vec::new();
     for start in 0..digs.len() {
         let mut num = 0;
@@ -19,7 +20,7 @@ fn circular_count(max: usize) -> usize {
     let primes = primes(max);
     (1..max).filter(|&i| primes[i]) // Small optimisation.
             .filter(|&i| {
-                let digits = digits(i as u64);
+                let digits: Vec<u64> = digits(i as u64);
                 let permutations = digit_permutations(&digits);
                 permutations.iter().all(|&x| primes[x as usize])
             })
@@ -33,7 +34,7 @@ pub fn main() {
 #[test]
 fn test_permutations() {
     let digits = digits(197);
-    let mut perm_should = vec![197, 971, 719];
+    let mut perm_should = vec![197, 719, 971];
     let mut perm_is = digit_permutations(&digits);
     perm_should.sort();
     perm_is.sort();
