@@ -1,4 +1,5 @@
 use bit_vec::BitVec;
+use std::collections::HashSet;
 
 pub fn digits_base(x: u64, base: u64) -> Vec<u64> {
     let mut digits: Vec<u64> = Vec::new();
@@ -64,6 +65,23 @@ pub fn digit_sum_str(x: &str) -> u32 {
     sum
 }
 
+pub fn is_palindrome<T: Eq>(list: &[T]) -> bool {
+    for (a, b) in list.iter().rev().zip(list) {
+        if a != b {
+            return false;
+        }
+    }
+    true
+}
+
+pub fn is_pandigital(digits: &[u64]) -> bool {
+    if digits.len() != 9 {
+        return false;
+    }
+    let digits: HashSet<u64> = digits.to_owned().into_iter().collect();
+    !digits.contains(&0) && digits.len() == 9
+}
+
 #[test]
 fn test_divisors() {
     assert_eq!(divisors(28), vec![1, 2, 4, 7, 14]);
@@ -104,4 +122,11 @@ fn test_digits_to_num() {
         let digits = digits(i as u64);
         assert!(i == digits_to_num(&digits));
     }
+}
+
+#[test]
+fn test_is_pandigital() {
+    assert!(is_pandigital(&digits(129384576)));
+    assert!(is_pandigital(&digits(627384591)));
+    assert!(!is_pandigital(&digits(929384576)));
 }

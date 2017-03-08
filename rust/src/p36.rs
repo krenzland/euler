@@ -1,13 +1,4 @@
-use ntheory::digits_base;
-
-fn is_palindrome<T: Eq>(list: &[T]) -> bool {
-    for (a, b) in list.iter().rev().zip(list) {
-        if a != b {
-            return false;
-        }
-    }
-    true
-}
+use ntheory::{digits_base, is_palindrome};
 
 fn is_double_palindrome(x: u64) -> bool {
     let digits_10 = digits_base(x, 10);
