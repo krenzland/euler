@@ -14,6 +14,7 @@ mod p34;
 mod p35;
 mod p36;
 mod p38;
+mod p52;
 mod p55;
 mod p56;
 mod p57;
@@ -43,6 +44,7 @@ fn main() {
             "35" => p35::main(),
             "36" => p36::main(),
             "38" => p38::main(),
+            "52" => p52::main(),
             "55" => p55::main(),
             "56" => p56::main(),
             "57" => p57::main(),
@@ -51,7 +53,7 @@ fn main() {
             _ => println!("Unknown problem id!"),
         }
     } else {
-        p55::main(); // Run most recent problem.
+        p52::main(); // Run most recent problem.
     }
 
 }
